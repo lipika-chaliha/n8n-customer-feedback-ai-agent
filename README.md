@@ -88,9 +88,11 @@ This project reinforced an important principle:
 
 Building the workflow is only the beginning. Testing the data flow, branches, integrations, edge cases and regression scenarios is equally important.
 
-## 📸 Screenshots
+## 📸 Workflow Overview
 
-Screenshots demonstrating the workflow and testing results will be added to this repository.
+![n8n Customer Feedback AI Agent Workflow](screenshots/workflow-overview.png)
+
+The workflow connects customer feedback submission, AI analysis, personalized response generation, email communication and Google Sheets storage.
 
 ## 🔐 Security
 
