@@ -4,69 +4,73 @@ An AI-powered customer feedback automation workflow built using **n8n, AI, Gmail
 
 ## 🎯 Project Overview
 
-This project automates the customer feedback process from submission to personalized response and data storage.
+This project automates the customer feedback process from submission to AI analysis, personalized response generation, email communication and data storage.
 
-### Workflow
+The project demonstrates how **AI Automation + Quality Engineering** can be combined to build workflows that are not only functional, but also **reliable, testable and maintainable**.
+
+## 🔄 Workflow
 
 **Customer Feedback → AI Analysis → Sentiment & Points → Personalized Response → Email → Google Sheets**
 
-The project demonstrates how **AI Automation + Quality Engineering** can be combined to build workflows that are not only functional, but also reliable and testable.
-
-## 🔄 How the Workflow Works
+### How the Workflow Works
 
 1. Customer submits feedback through a form.
-2. n8n receives the feedback.
+2. n8n receives the feedback submission.
 3. AI analyzes the customer feedback.
 4. Sentiment and points are determined.
 5. AI generates a personalized response.
-6. Two intended email responses are sent.
-7. One consolidated customer record is stored in Google Sheets.
+6. Two intended email responses are generated and sent.
+7. Customer information and AI-generated results are stored in Google Sheets.
 
 ## 🛠️ Technologies Used
 
-* **n8n** — Workflow Automation
-* **AI / LLM** — Sentiment Analysis and Response Generation
-* **Gmail** — Automated Email Communication
-* **Google Sheets** — Customer Data Storage
-* **Quality Engineering** — Workflow Validation and Reliability Testing
+* **n8n** — Workflow automation
+* **AI / LLM** — Sentiment analysis and response generation
+* **Gmail** — Automated email communication
+* **Google Sheets** — Customer data storage
+* **Quality Engineering** — Workflow validation and reliability testing
 
 ## 🧪 QA & Testing Approach
 
-The workflow was tested for:
+The workflow was tested from an end-to-end Quality Engineering perspective.
 
-* Functional scenarios
-* End-to-end workflow execution
-* Branching logic
-* Data mapping
-* Email delivery
+Testing areas included:
+
+* Functional testing
+* End-to-end workflow validation
+* Branching and workflow logic
+* AI output validation
+* Data mapping validation
+* Email delivery validation
 * Duplicate processing
-* Edge cases
 * Data integrity
-* Regression scenarios
+* Edge-case scenarios
+* Regression testing
+* Workflow re-execution
 
 ## 🐞 Defect Identified
 
-During testing, I discovered that one customer feedback submission was generating **two records in Google Sheets**.
+During testing, I discovered that a single customer feedback submission was generating **two records in Google Sheets**.
 
-### Expected
+### Expected Result
 
-**1 submission → 2 intended emails → 1 Google Sheets record**
+**1 customer submission → 2 intended emails → 1 Google Sheets record**
 
-### Actual
+### Actual Result
 
-**1 submission → 2 intended emails → 2 Google Sheets records ❌**
+**1 customer submission → 2 intended emails → 2 Google Sheets records ❌**
 
-The email functionality itself was working correctly.
-
-The issue was related to multiple workflow items reaching the Google Sheets node.
+The email functionality was working correctly. The issue was related to multiple workflow items reaching the Google Sheets step.
 
 ## 🔧 Resolution
 
-Instead of changing the working email logic, I separated the workflow paths and introduced a **Limit node before Google Sheets**.
+Instead of modifying the working email logic, I separated the workflow paths and introduced a **Limit node before Google Sheets**.
 
 This ensured that only the intended item reached the Google Sheets storage step.
 
 ## ✅ Final Result
+
+The workflow was validated to ensure the intended business flow:
 
 **1 customer submission**
 
@@ -78,7 +82,7 @@ This ensured that only the intended item reached the Google Sheets storage step.
 
 **1 consolidated Google Sheets record**
 
-The duplicate-record scenario was also treated as a **regression test scenario** so that the same issue can be checked whenever relevant workflow logic or mappings are changed.
+The duplicate-record scenario was also added to the regression coverage so it can be revalidated whenever relevant workflow nodes, mappings or logic are changed.
 
 ## 💡 Quality Engineering Learning
 
@@ -86,7 +90,7 @@ This project reinforced an important principle:
 
 > **AI automation should be reliable by design, not simply fixed when something breaks.**
 
-Building the workflow is only the beginning. Testing the data flow, branches, integrations, edge cases and regression scenarios is equally important.
+Building an AI workflow is only the beginning. Validating data flow, branches, integrations, AI outputs, edge cases and regression scenarios is equally important for production reliability.
 
 ## 📸 Workflow Overview
 
@@ -96,7 +100,9 @@ The workflow connects customer feedback submission, AI analysis, personalized re
 
 ## 🔐 Security
 
-No production API keys, passwords, access tokens or confidential customer information should be included in this repository.
+This repository should not contain production API keys, passwords, access tokens, private credentials or confidential customer information.
+
+The workflow is presented using test/sample data for demonstration purposes.
 
 ## 👩‍💻 Author
 
